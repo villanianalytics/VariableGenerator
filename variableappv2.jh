@@ -1,0 +1,57 @@
+entity App {
+	Connection String,
+    Cube String,
+    VariableName String,
+    VariableValue String,
+    EffDt ZonedDateTime
+}
+
+
+
+entity Cubes {
+	Connection String,
+    Cube String
+}
+
+entity VariableName {
+	Connection String,
+    Cube String,
+    Name String,
+    ListName String
+}
+
+entity ListUD {
+	ListName String,
+    ListValue String
+}
+
+relationship OneToMany {
+	Cubes to VariableName{Cube}
+
+}
+
+relationship ManyToOne {
+	VariableName to ListUD{ListName}
+
+}
+
+relationship OneToOne {
+	App to Cubes{Connection},
+    App to VariableName{Connection},
+
+}
+
+
+
+
+// Set pagination options
+paginate App, VariableName,Cubes,ListUD with infinite-scroll
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
