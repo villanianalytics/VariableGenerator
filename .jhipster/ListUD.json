@@ -1,0 +1,40 @@
+{
+  "name": "ListUD",
+  "fields": [
+    {
+      "fieldName": "listName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "listValue",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "variableName",
+      "otherEntityRelationshipName": "listUD",
+      "relationshipName": "listName",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "variableName",
+      "otherEntityRelationshipName": "listUD",
+      "relationshipName": "listName"
+    }
+  ],
+  "changelogDate": "20201206134116",
+  "entityTableName": "list_ud",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

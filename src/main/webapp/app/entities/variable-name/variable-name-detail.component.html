@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="variableName">
+            <h2><span>Variable Name</span> {{ variableName.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Variable Name</span></dt>
+                <dd>
+                    <span>{{ variableName.variableName }}</span>
+                </dd>
+                <dt><span>List UD</span></dt>
+                <dd>
+                    <div *ngIf="variableName.listUD">
+                        <a [routerLink]="['/list-ud', variableName.listUD?.id, 'view']">{{ variableName.listUD?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Cube</span></dt>
+                <dd>
+                    <div *ngIf="variableName.cube">
+                        <a [routerLink]="['/cubes', variableName.cube?.id, 'view']">{{ variableName.cube?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/variable-name', variableName.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

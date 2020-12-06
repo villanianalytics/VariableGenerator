@@ -1,0 +1,25 @@
+{
+  "name": "App",
+  "fields": [
+    {
+      "fieldName": "variableValue",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "effDt",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20201206133816",
+  "entityTableName": "app",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
