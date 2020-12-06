@@ -1,0 +1,28 @@
+{
+  "name": "Cubes",
+  "fields": [
+    {
+      "fieldName": "cube",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "variableName",
+      "otherEntityRelationshipName": "cube",
+      "relationshipName": "cube"
+    }
+  ],
+  "changelogDate": "20201206134452",
+  "entityTableName": "cubes",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
