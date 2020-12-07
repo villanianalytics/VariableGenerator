@@ -1,5 +1,5 @@
-entity Connection {
-	Connection String,
+entity ConnectionMgr {
+	ConnectionName String,
     Description String,
     URL String,
     Username String,
@@ -34,9 +34,9 @@ relationship OneToMany {
 
 
 relationship OneToOne {
-	Connection{Connection} to App,
-    Connection{Connection} to Cubes,
-    Connection{Connection} to VariableName,
+	ConnectionMgr{ConnectionName} to App,
+    ConnectionMgr{ConnectionName} to Cubes,
+    ConnectionMgr{ConnectionName} to VariableName,
 
 }
 
@@ -44,7 +44,7 @@ relationship OneToOne {
 
 
 // Set pagination options
-paginate App, VariableName,Cubes,Connection with infinite-scroll
+paginate App, VariableName,Cubes,ConnectionMgr with infinite-scroll
 
 // Use Data Transfer Objects (DTO)
 // dto * with mapstruct

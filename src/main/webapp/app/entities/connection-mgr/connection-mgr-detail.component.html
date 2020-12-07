@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="connectionMgr">
+            <h2><span>Connection Mgr</span> {{ connectionMgr.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Connection Name</span></dt>
+                <dd>
+                    <span>{{ connectionMgr.connectionName }}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{ connectionMgr.description }}</span>
+                </dd>
+                <dt><span>U RL</span></dt>
+                <dd>
+                    <span>{{ connectionMgr.uRL }}</span>
+                </dd>
+                <dt><span>Username</span></dt>
+                <dd>
+                    <span>{{ connectionMgr.username }}</span>
+                </dd>
+                <dt><span>Password</span></dt>
+                <dd>
+                    <span>{{ connectionMgr.password }}</span>
+                </dd>
+                <dt><span>Identity Domain</span></dt>
+                <dd>
+                    <span>{{ connectionMgr.identityDomain }}</span>
+                </dd>
+                <dt><span>Connection Name</span></dt>
+                <dd>
+                    <div *ngIf="connectionMgr.connectionName">
+                        <a [routerLink]="['/app', connectionMgr.connectionName?.id, 'view']">{{ connectionMgr.connectionName?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Connection Name</span></dt>
+                <dd>
+                    <div *ngIf="connectionMgr.connectionName">
+                        <a [routerLink]="['/cubes', connectionMgr.connectionName?.id, 'view']">{{ connectionMgr.connectionName?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Connection Name</span></dt>
+                <dd>
+                    <div *ngIf="connectionMgr.connectionName">
+                        <a [routerLink]="['/variable-name', connectionMgr.connectionName?.id, 'view']">{{ connectionMgr.connectionName?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/connection-mgr', connectionMgr.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

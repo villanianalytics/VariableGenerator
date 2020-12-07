@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-connection-mgr-heading">Create or edit a Connection Mgr</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_connectionName">Connection Name</label>
+                    <input type="text" class="form-control" name="connectionName" id="field_connectionName"
+                           formControlName="connectionName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_uRL">U RL</label>
+                    <input type="text" class="form-control" name="uRL" id="field_uRL"
+                           formControlName="uRL"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_username">Username</label>
+                    <input type="text" class="form-control" name="username" id="field_username"
+                           formControlName="username"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_password">Password</label>
+                    <input type="text" class="form-control" name="password" id="field_password"
+                           formControlName="password"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_identityDomain">Identity Domain</label>
+                    <input type="text" class="form-control" name="identityDomain" id="field_identityDomain"
+                           formControlName="identityDomain"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_connectionName">Connection Name</label>
+                    <select class="form-control" id="field_connectionName" name="connectionName" formControlName="connectionName">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="appOption.id === editForm.get('connectionName')!.value?.id ? editForm.get('connectionName')!.value : appOption" *ngFor="let appOption of connectionnames; trackBy: trackById">{{ appOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_connectionName">Connection Name</label>
+                    <select class="form-control" id="field_connectionName" name="connectionName" formControlName="connectionName">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="cubesOption.id === editForm.get('connectionName')!.value?.id ? editForm.get('connectionName')!.value : cubesOption" *ngFor="let cubesOption of connectionnames; trackBy: trackById">{{ cubesOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_connectionName">Connection Name</label>
+                    <select class="form-control" id="field_connectionName" name="connectionName" formControlName="connectionName">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="variableNameOption.id === editForm.get('connectionName')!.value?.id ? editForm.get('connectionName')!.value : variableNameOption" *ngFor="let variableNameOption of connectionnames; trackBy: trackById">{{ variableNameOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

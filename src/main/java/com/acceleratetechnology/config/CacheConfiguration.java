@@ -55,6 +55,7 @@ public class CacheConfiguration {
             createCache(cm, com.acceleratetechnology.domain.Cubes.class.getName());
             createCache(cm, com.acceleratetechnology.domain.Cubes.class.getName() + ".cubes");
             createCache(cm, com.acceleratetechnology.domain.VariableName.class.getName());
+            createCache(cm, com.acceleratetechnology.domain.ConnectionMgr.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
