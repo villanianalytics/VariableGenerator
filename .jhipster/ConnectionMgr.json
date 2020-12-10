@@ -2,10 +2,6 @@
   "name": "ConnectionMgr",
   "fields": [
     {
-      "fieldName": "connectionName",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "description",
       "fieldType": "String"
     },

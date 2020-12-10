@@ -29,7 +29,6 @@ export class ConnectionMgrUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    connectionName: [],
     description: [],
     uRL: [],
     username: [],
@@ -124,7 +123,6 @@ export class ConnectionMgrUpdateComponent implements OnInit {
   updateForm(connectionMgr: IConnectionMgr): void {
     this.editForm.patchValue({
       id: connectionMgr.id,
-      connectionName: connectionMgr.connectionName,
       description: connectionMgr.description,
       uRL: connectionMgr.uRL,
       username: connectionMgr.username,
@@ -154,7 +152,6 @@ export class ConnectionMgrUpdateComponent implements OnInit {
     return {
       ...new ConnectionMgr(),
       id: this.editForm.get(['id'])!.value,
-      connectionName: this.editForm.get(['connectionName'])!.value,
       description: this.editForm.get(['description'])!.value,
       uRL: this.editForm.get(['uRL'])!.value,
       username: this.editForm.get(['username'])!.value,

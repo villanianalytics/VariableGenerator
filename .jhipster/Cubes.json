@@ -1,11 +1,6 @@
 {
   "name": "Cubes",
-  "fields": [
-    {
-      "fieldName": "cube",
-      "fieldType": "String"
-    }
-  ],
+  "fields": [],
   "relationships": [
     {
       "relationshipType": "one-to-many",

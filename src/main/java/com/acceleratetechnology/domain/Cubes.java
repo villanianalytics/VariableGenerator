@@ -25,9 +25,6 @@ public class Cubes implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "cube")
-    private String cube;
-
     @OneToMany(mappedBy = "cube")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<VariableName> cubes = new HashSet<>();
@@ -39,19 +36,6 @@ public class Cubes implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getCube() {
-        return cube;
-    }
-
-    public Cubes cube(String cube) {
-        this.cube = cube;
-        return this;
-    }
-
-    public void setCube(String cube) {
-        this.cube = cube;
     }
 
     public Set<VariableName> getCubes() {
@@ -101,7 +85,6 @@ public class Cubes implements Serializable {
     public String toString() {
         return "Cubes{" +
             "id=" + getId() +
-            ", cube='" + getCube() + "'" +
             "}";
     }
 }

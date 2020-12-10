@@ -29,7 +29,6 @@ export class ConnectionMgrUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  connectionNameInput = element(by.id('field_connectionName'));
   descriptionInput = element(by.id('field_description'));
   uRLInput = element(by.id('field_uRL'));
   usernameInput = element(by.id('field_username'));
@@ -42,14 +41,6 @@ export class ConnectionMgrUpdatePage {
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
-  }
-
-  async setConnectionNameInput(connectionName: string): Promise<void> {
-    await this.connectionNameInput.sendKeys(connectionName);
-  }
-
-  async getConnectionNameInput(): Promise<string> {
-    return await this.connectionNameInput.getAttribute('value');
   }
 
   async setDescriptionInput(description: string): Promise<void> {

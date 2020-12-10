@@ -17,7 +17,6 @@ export class CubesUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    cube: [],
   });
 
   constructor(protected cubesService: CubesService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -31,7 +30,6 @@ export class CubesUpdateComponent implements OnInit {
   updateForm(cubes: ICubes): void {
     this.editForm.patchValue({
       id: cubes.id,
-      cube: cubes.cube,
     });
   }
 
@@ -53,7 +51,6 @@ export class CubesUpdateComponent implements OnInit {
     return {
       ...new Cubes(),
       id: this.editForm.get(['id'])!.value,
-      cube: this.editForm.get(['cube'])!.value,
     };
   }
 
