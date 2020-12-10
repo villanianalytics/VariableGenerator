@@ -41,14 +41,12 @@
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
                     <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="cube"><span>Cube</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
                 <tr *ngFor="let cubes of cubes ;trackBy: trackId">
                     <td><a [routerLink]="['/cubes', cubes.id, 'view']">{{ cubes.id }}</a></td>
-                    <td>{{ cubes.cube }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

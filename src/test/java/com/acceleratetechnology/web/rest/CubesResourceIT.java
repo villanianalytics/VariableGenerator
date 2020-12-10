@@ -40,9 +40,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class CubesResourceIT {
 
-    private static final String DEFAULT_CUBE = "AAAAAAAAAA";
-    private static final String UPDATED_CUBE = "BBBBBBBBBB";
-
     @Autowired
     private CubesRepository cubesRepository;
 
@@ -72,8 +69,7 @@ public class CubesResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Cubes createEntity(EntityManager em) {
-        Cubes cubes = new Cubes()
-            .cube(DEFAULT_CUBE);
+        Cubes cubes = new Cubes();
         return cubes;
     }
     /**
@@ -83,8 +79,7 @@ public class CubesResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Cubes createUpdatedEntity(EntityManager em) {
-        Cubes cubes = new Cubes()
-            .cube(UPDATED_CUBE);
+        Cubes cubes = new Cubes();
         return cubes;
     }
 
@@ -107,7 +102,6 @@ public class CubesResourceIT {
         List<Cubes> cubesList = cubesRepository.findAll();
         assertThat(cubesList).hasSize(databaseSizeBeforeCreate + 1);
         Cubes testCubes = cubesList.get(cubesList.size() - 1);
-        assertThat(testCubes.getCube()).isEqualTo(DEFAULT_CUBE);
 
         // Validate the Cubes in Elasticsearch
         verify(mockCubesSearchRepository, times(1)).save(testCubes);
@@ -146,8 +140,7 @@ public class CubesResourceIT {
         restCubesMockMvc.perform(get("/api/cubes?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(cubes.getId().intValue())))
-            .andExpect(jsonPath("$.[*].cube").value(hasItem(DEFAULT_CUBE)));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(cubes.getId().intValue())));
     }
     
     @Test
@@ -160,8 +153,7 @@ public class CubesResourceIT {
         restCubesMockMvc.perform(get("/api/cubes/{id}", cubes.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(cubes.getId().intValue()))
-            .andExpect(jsonPath("$.cube").value(DEFAULT_CUBE));
+            .andExpect(jsonPath("$.id").value(cubes.getId().intValue()));
     }
     @Test
     @Transactional
@@ -183,8 +175,6 @@ public class CubesResourceIT {
         Cubes updatedCubes = cubesRepository.findById(cubes.getId()).get();
         // Disconnect from session so that the updates on updatedCubes are not directly saved in db
         em.detach(updatedCubes);
-        updatedCubes
-            .cube(UPDATED_CUBE);
 
         restCubesMockMvc.perform(put("/api/cubes")
             .contentType(MediaType.APPLICATION_JSON)
@@ -195,7 +185,6 @@ public class CubesResourceIT {
         List<Cubes> cubesList = cubesRepository.findAll();
         assertThat(cubesList).hasSize(databaseSizeBeforeUpdate);
         Cubes testCubes = cubesList.get(cubesList.size() - 1);
-        assertThat(testCubes.getCube()).isEqualTo(UPDATED_CUBE);
 
         // Validate the Cubes in Elasticsearch
         verify(mockCubesSearchRepository, times(2)).save(testCubes);
@@ -254,7 +243,6 @@ public class CubesResourceIT {
         restCubesMockMvc.perform(get("/api/_search/cubes?query=id:" + cubes.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(cubes.getId().intValue())))
-            .andExpect(jsonPath("$.[*].cube").value(hasItem(DEFAULT_CUBE)));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(cubes.getId().intValue())));
     }
 }

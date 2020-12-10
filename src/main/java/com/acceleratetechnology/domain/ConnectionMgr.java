@@ -23,9 +23,6 @@ public class ConnectionMgr implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "connection_name")
-    private String connectionName;
-
     @Column(name = "description")
     private String description;
 
@@ -60,19 +57,6 @@ public class ConnectionMgr implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getConnectionName() {
-        return connectionName;
-    }
-
-    public ConnectionMgr connectionName(String connectionName) {
-        this.connectionName = connectionName;
-        return this;
-    }
-
-    public void setConnectionName(String connectionName) {
-        this.connectionName = connectionName;
     }
 
     public String getDescription() {
@@ -201,7 +185,6 @@ public class ConnectionMgr implements Serializable {
     public String toString() {
         return "ConnectionMgr{" +
             "id=" + getId() +
-            ", connectionName='" + getConnectionName() + "'" +
             ", description='" + getDescription() + "'" +
             ", uRL='" + getuRL() + "'" +
             ", username='" + getUsername() + "'" +

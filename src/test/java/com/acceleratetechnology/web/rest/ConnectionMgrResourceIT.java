@@ -40,9 +40,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class ConnectionMgrResourceIT {
 
-    private static final String DEFAULT_CONNECTION_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_CONNECTION_NAME = "BBBBBBBBBB";
-
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
@@ -88,7 +85,6 @@ public class ConnectionMgrResourceIT {
      */
     public static ConnectionMgr createEntity(EntityManager em) {
         ConnectionMgr connectionMgr = new ConnectionMgr()
-            .connectionName(DEFAULT_CONNECTION_NAME)
             .description(DEFAULT_DESCRIPTION)
             .uRL(DEFAULT_U_RL)
             .username(DEFAULT_USERNAME)
@@ -104,7 +100,6 @@ public class ConnectionMgrResourceIT {
      */
     public static ConnectionMgr createUpdatedEntity(EntityManager em) {
         ConnectionMgr connectionMgr = new ConnectionMgr()
-            .connectionName(UPDATED_CONNECTION_NAME)
             .description(UPDATED_DESCRIPTION)
             .uRL(UPDATED_U_RL)
             .username(UPDATED_USERNAME)
@@ -132,7 +127,6 @@ public class ConnectionMgrResourceIT {
         List<ConnectionMgr> connectionMgrList = connectionMgrRepository.findAll();
         assertThat(connectionMgrList).hasSize(databaseSizeBeforeCreate + 1);
         ConnectionMgr testConnectionMgr = connectionMgrList.get(connectionMgrList.size() - 1);
-        assertThat(testConnectionMgr.getConnectionName()).isEqualTo(DEFAULT_CONNECTION_NAME);
         assertThat(testConnectionMgr.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testConnectionMgr.getuRL()).isEqualTo(DEFAULT_U_RL);
         assertThat(testConnectionMgr.getUsername()).isEqualTo(DEFAULT_USERNAME);
@@ -177,7 +171,6 @@ public class ConnectionMgrResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(connectionMgr.getId().intValue())))
-            .andExpect(jsonPath("$.[*].connectionName").value(hasItem(DEFAULT_CONNECTION_NAME)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].uRL").value(hasItem(DEFAULT_U_RL)))
             .andExpect(jsonPath("$.[*].username").value(hasItem(DEFAULT_USERNAME)))
@@ -196,7 +189,6 @@ public class ConnectionMgrResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(connectionMgr.getId().intValue()))
-            .andExpect(jsonPath("$.connectionName").value(DEFAULT_CONNECTION_NAME))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.uRL").value(DEFAULT_U_RL))
             .andExpect(jsonPath("$.username").value(DEFAULT_USERNAME))
@@ -224,7 +216,6 @@ public class ConnectionMgrResourceIT {
         // Disconnect from session so that the updates on updatedConnectionMgr are not directly saved in db
         em.detach(updatedConnectionMgr);
         updatedConnectionMgr
-            .connectionName(UPDATED_CONNECTION_NAME)
             .description(UPDATED_DESCRIPTION)
             .uRL(UPDATED_U_RL)
             .username(UPDATED_USERNAME)
@@ -240,7 +231,6 @@ public class ConnectionMgrResourceIT {
         List<ConnectionMgr> connectionMgrList = connectionMgrRepository.findAll();
         assertThat(connectionMgrList).hasSize(databaseSizeBeforeUpdate);
         ConnectionMgr testConnectionMgr = connectionMgrList.get(connectionMgrList.size() - 1);
-        assertThat(testConnectionMgr.getConnectionName()).isEqualTo(UPDATED_CONNECTION_NAME);
         assertThat(testConnectionMgr.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testConnectionMgr.getuRL()).isEqualTo(UPDATED_U_RL);
         assertThat(testConnectionMgr.getUsername()).isEqualTo(UPDATED_USERNAME);
@@ -305,7 +295,6 @@ public class ConnectionMgrResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(connectionMgr.getId().intValue())))
-            .andExpect(jsonPath("$.[*].connectionName").value(hasItem(DEFAULT_CONNECTION_NAME)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].uRL").value(hasItem(DEFAULT_U_RL)))
             .andExpect(jsonPath("$.[*].username").value(hasItem(DEFAULT_USERNAME)))

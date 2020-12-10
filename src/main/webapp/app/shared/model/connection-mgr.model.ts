@@ -4,7 +4,6 @@ import { IVariableName } from 'app/shared/model/variable-name.model';
 
 export interface IConnectionMgr {
   id?: number;
-  connectionName?: string;
   description?: string;
   uRL?: string;
   username?: string;
@@ -18,7 +17,6 @@ export interface IConnectionMgr {
 export class ConnectionMgr implements IConnectionMgr {
   constructor(
     public id?: number,
-    public connectionName?: string,
     public description?: string,
     public uRL?: string,
     public username?: string,

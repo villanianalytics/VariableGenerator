@@ -40,9 +40,7 @@ describe('Cubes e2e test', () => {
 
     await cubesComponentsPage.clickOnCreateButton();
 
-    await promise.all([cubesUpdatePage.setCubeInput('cube')]);
-
-    expect(await cubesUpdatePage.getCubeInput()).to.eq('cube', 'Expected Cube value to be equals to cube');
+    await promise.all([]);
 
     await cubesUpdatePage.save();
     expect(await cubesUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

@@ -29,18 +29,8 @@ export class CubesUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  cubeInput = element(by.id('field_cube'));
-
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
-  }
-
-  async setCubeInput(cube: string): Promise<void> {
-    await this.cubeInput.sendKeys(cube);
-  }
-
-  async getCubeInput(): Promise<string> {
-    return await this.cubeInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

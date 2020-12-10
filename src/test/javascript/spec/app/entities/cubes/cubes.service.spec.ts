@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(CubesService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Cubes(0, 'AAAAAAA');
+      elemDefault = new Cubes(0);
     });
 
     describe('Service methods', () => {
@@ -52,12 +52,7 @@ describe('Service Tests', () => {
       });
 
       it('should update a Cubes', () => {
-        const returnedFromService = Object.assign(
-          {
-            cube: 'BBBBBB',
-          },
-          elemDefault
-        );
+        const returnedFromService = Object.assign({}, elemDefault);
 
         const expected = Object.assign({}, returnedFromService);
 
@@ -69,12 +64,7 @@ describe('Service Tests', () => {
       });
 
       it('should return a list of Cubes', () => {
-        const returnedFromService = Object.assign(
-          {
-            cube: 'BBBBBB',
-          },
-          elemDefault
-        );
+        const returnedFromService = Object.assign({}, elemDefault);
 
         const expected = Object.assign({}, returnedFromService);
 

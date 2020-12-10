@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(ConnectionMgrService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new ConnectionMgr(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new ConnectionMgr(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -54,7 +54,6 @@ describe('Service Tests', () => {
       it('should update a ConnectionMgr', () => {
         const returnedFromService = Object.assign(
           {
-            connectionName: 'BBBBBB',
             description: 'BBBBBB',
             uRL: 'BBBBBB',
             username: 'BBBBBB',
@@ -76,7 +75,6 @@ describe('Service Tests', () => {
       it('should return a list of ConnectionMgr', () => {
         const returnedFromService = Object.assign(
           {
-            connectionName: 'BBBBBB',
             description: 'BBBBBB',
             uRL: 'BBBBBB',
             username: 'BBBBBB',

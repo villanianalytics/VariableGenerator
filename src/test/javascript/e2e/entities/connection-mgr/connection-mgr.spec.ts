@@ -44,7 +44,6 @@ describe('ConnectionMgr e2e test', () => {
     await connectionMgrComponentsPage.clickOnCreateButton();
 
     await promise.all([
-      connectionMgrUpdatePage.setConnectionNameInput('connectionName'),
       connectionMgrUpdatePage.setDescriptionInput('description'),
       connectionMgrUpdatePage.setURLInput('uRL'),
       connectionMgrUpdatePage.setUsernameInput('username'),
@@ -55,10 +54,6 @@ describe('ConnectionMgr e2e test', () => {
       connectionMgrUpdatePage.connectionNameSelectLastOption(),
     ]);
 
-    expect(await connectionMgrUpdatePage.getConnectionNameInput()).to.eq(
-      'connectionName',
-      'Expected ConnectionName value to be equals to connectionName'
-    );
     expect(await connectionMgrUpdatePage.getDescriptionInput()).to.eq(
       'description',
       'Expected Description value to be equals to description'
