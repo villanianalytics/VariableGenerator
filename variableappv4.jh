@@ -1,5 +1,4 @@
 entity ConnectionMgr {
-	ConnectionName String,
     Description String,
     URL String,
     Username String,
@@ -16,7 +15,7 @@ entity App {
 
 
 entity Cubes {
-Cube String
+
 }
 
 entity VariableName {
